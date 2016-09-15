@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912205418) do
+ActiveRecord::Schema.define(version: 20160915194058) do
 
   create_table "clientes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "nome",       limit: 80
     t.integer  "idade"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+  end
+
+  create_table "comentarios", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.text     "conteudo",        limit: 65535
+    t.integer  "comentavel_id"
+    t.string   "comentavel_type"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["comentavel_id"], name: "index_comentarios_on_comentavel_id", using: :btree
+    t.index ["comentavel_type"], name: "index_comentarios_on_comentavel_type", using: :btree
   end
 
   create_table "pratos", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
