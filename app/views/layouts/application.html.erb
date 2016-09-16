@@ -6,10 +6,15 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= yield :css %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <%= menu_principal %w(restaurantes clientes qualificacoes) %>
     <%= yield %>
+    <script>
+      <%= yield :js %>
+    </script>
   </body>
 </html>
